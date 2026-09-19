@@ -1,45 +1,77 @@
-# <ชื่อทีม>-swreqspec
+# โปรเจกต์แห่งชาติ - swreqspec
 
-repo สำหรับงาน Spec-Driven Development ในรายวิชา 520461-165 Software Requirement Specification and Management
+Repo สำหรับงาน Spec-Driven Development ในรายวิชา 520461-165 Software Requirement Specification and Management
 ภาควิชาคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยศิลปากร
 
 ## ทีม
 
-- ชื่อทีม:
+- ชื่อทีม: โปรเจกต์แห่งชาติ
 - สมาชิก:
-- เครื่องมือ AI ที่ใช้: (Copilot ใน Codespaces / Claude Code / Cursor)
+  1. 640710856 กานต์ เกิดศิริ
+  2. 650710727 สุภัชญา เบญจานุวัตร
+  3. 650710735 อารียา พิทักษ์มโนธรรม
+  4. 650710737 อุไรวรรณ นวลคำ
+  5. 660710246 นันทิพัฒน์ วงษ์นามใหม่
+  6. 660710258 สหฤทธิ์ เล็กเรืองสินธุ์
+- เครื่องมือ AI ที่ใช้: Copilot, Claude Code, Cursor
 
-## โครงของ repo
+## ฟีเจอร์ที่กำลังพัฒนา
 
+- Feature: กรอกข้อมูลผลการศึกษา (Academic Record Entry)
+- Spec ID: SPEC-EDU-001
+- Use case: UC-01 กรอกข้อมูลผลการศึกษา
+- Status: Draft v2
+
+## วัตถุประสงค์ของระบบ
+
+นักศึกษาที่เข้าสู่ระบบแล้วสามารถกรอกข้อมูลผลการศึกษาและแนบเอกสาร Transcript แล้วส่งข้อมูลได้สำเร็จ โดยระบบจะบันทึกข้อมูล ตั้งสถานะเป็น "รอตรวจสอบคุณสมบัติ" และแจ้งผลกลับทางอีเมลและการแจ้งเตือนในระบบ
+
+## โครงสร้าง Repository
+
+```text
+README.md                       ไฟล์โครงสร้างและข้อมูลโปรเจกต์
+AGENTS.md                       กติกาที่ AI ต้องปฏิบัติตาม
+CLAUDE.md                      ชี้ไปที่ AGENTS.md
+prompt-log.md                   บันทึกคำสั่งและคำตอบที่ใช้กับ AI
+docs/
+  srs/                          SRS ฉบับเต็มและ diagram สำหรับอ้างอิง
+specs/
+  README.md                     ดัชนีฟีเจอร์และตำแหน่ง spec
+  001-Enter-educational-information/
+    spec.md                    ข้อกำหนดฟีเจอร์หลักของระบบ
 ```
-README.md                    ไฟล์นี้ (ใส่ชื่อทีม สมาชิก และ reflection ท้ายคาบ)
-AGENTS.md                    กติกาที่ AI ต้องทำตาม (Copilot และ Cursor อ่านเอง)
-CLAUDE.md                    ชี้ไป AGENTS.md (สำหรับ Claude Code)
-docs/srs/                    SRS ฉบับเต็มและ diagram ของทีม (สำหรับคนอ่าน)
-specs/README.md              ดัชนีว่าฟีเจอร์ไหนอยู่โฟลเดอร์ไหน
-specs/001-booking/spec.md    ตัวอย่าง spec.md ของรายวิชา (ใช้ฝึกในคาบ)
-specs/00N-<feature>/spec.md  spec.md ของทีม 1 โฟลเดอร์ต่อ 1 ฟีเจอร์
-prompt-log.md                AI สร้างให้เมื่อใช้ /clarify (บันทึกคำถามและคำตอบ)
-.github/prompts/             คำสั่ง /clarify และ /plan สำหรับ Copilot
-.claude/commands/            คำสั่ง /clarify และ /plan สำหรับ Claude Code
-.cursor/commands/            คำสั่ง /clarify และ /plan สำหรับ Cursor
-```
 
-## วิธีเริ่ม
+## เอกสารอ้างอิงหลัก
 
-1. กด Code แล้วเลือก Codespaces สร้างเครื่องใหม่ (หรือ clone ลงเครื่องแล้วเปิดด้วย Cursor / Claude Code)
-2. เปิด Copilot Chat สลับเป็นโหมด Agent
-3. พิมพ์ `/clarify specs/001-booking/spec.md`
-4. ตอบคำถาม แล้วดู diff ของ spec.md ก่อน commit
+- [specs/001-Enter-educational-information/spec.md](specs/001-Enter-educational-information/spec.md)
+- [docs/srs/README.md](docs/srs/README.md)
 
-รายละเอียดคำสั่งอยู่ที่ `docs/agent-pack-README.md`
+## ขอบเขตหลักของฟีเจอร์
 
-## ถ้าเป็น repo ของทีม
+- แสดงฟอร์มกรอกข้อมูลผลการศึกษาแบบครบถ้วน
+- บังคับแนบ Transcript อย่างน้อย 1 ไฟล์
+- ตรวจความครบถ้วน ข้อมูลรูปแบบ และชนิด/ขนาดไฟล์
+- บันทึกข้อมูลและตั้งสถานะเป็น "รอตรวจสอบคุณสมบัติ"
+- แจ้งเตือนทางระบบและอีเมลหลังบันทึกสำเร็จ
+- รองรับกรณีรอบปิด/ข้อมูลซ้ำ/การ rollback เมื่อเกิดความล้มเหลว
 
-- แก้ชื่อ repo เป็น `<ชื่อทีม>-swreqspec` และตั้งเป็น public
-- ลบโฟลเดอร์ `specs/001-booking/` แล้วสร้าง `specs/001-<ชื่อฟีเจอร์ของทีม>/spec.md`
-- อัปโหลด SRS และ diagram ของทีมไว้ที่ `docs/srs/`
+## หลักการทำงานตาม Spec-Driven Development
+
+1. อ่าน spec.md เป็นแหล่งความจริงหลักก่อนเริ่มพัฒนาหรือปรับแก้ใด ๆ
+2. ใช้ ID จาก spec เช่น FR-EDU-01, AC-EDU-01 ให้ตรงกับเอกสารและการทดสอบ
+3. ไม่เพิ่ม requirement ที่ไม่มีใน spec
+4. ตรวจสอบให้ทุกการเปลี่ยนแปลงสอดคล้องกับข้อกำหนดที่ระบุไว้
 
 ## Reflection
 
-(เขียนท้ายคาบ 5 บรรทัด)
+1. ทีมได้เห็นว่าการออกแบบการแจ้งเตือนอีเมลและการ retry ควรมีเงื่อนไขและความชัดเจนในการกำหนดจำนวนครั้งและเวลาส่งซ้ำ
+2. ทีมได้เรียนรู้ว่าความชัดเจนเรื่องการบันทึกร่างหรือการแก้ไขข้อมูลซ้ำมีผลต่อความแม่นยำของ spec และการทดสอบโดยตรง
+3. ทีมตระหนักว่ากรณีรอบปิด/ข้อมูลมีอยู่แล้ว/การ rollback ของไฟล์ upload ต้องมี rule ที่ชัดเจนเพื่อหลีกเลี่ยงความสับสนระหว่างระบบและผู้ใช้
+
+## สถานะปัจจุบัน
+
+- สร้าง spec สำหรับฟีเจอร์กรอกข้อมูลผลการศึกษาแล้ว
+- ระบุ requirement, constraints, quality goals และ acceptance criteria ตามแผนการพัฒนาระบบ
+- ใช้ repo นี้เป็นฐานสำหรับการทำงานและตรวจสอบความสอดคล้องของโค้ดกับ spec ต่อไป
+
+
